@@ -16,7 +16,10 @@ namespace Supernova {
 	class Supernova {
 	public:
 		void run() {
-			
+			initWindow();
+			initVulkan();
+			mainLoop();
+			cleanup();
 		}
 	private:
 		void initWindow() {}
