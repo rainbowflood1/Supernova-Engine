@@ -14,7 +14,10 @@ import vulkan_hpp;
 
 namespace Supernova {
 	class Supernova {
-
+	public:
+		void run() {
+			
+		}
 	};
 };
 
