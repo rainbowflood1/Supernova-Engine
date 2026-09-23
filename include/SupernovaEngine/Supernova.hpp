@@ -18,6 +18,10 @@ namespace Supernova {
 		void run() {
 			
 		}
+	private:
+		void initVulkan() {}
+		void mainLoop() {}
+		void cleanup() {}
 	};
 };
 
