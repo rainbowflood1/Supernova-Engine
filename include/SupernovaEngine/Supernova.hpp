@@ -22,7 +22,9 @@ namespace Supernova {
 			cleanup();
 		}
 	private:
-		void initWindow() {}
+		void initWindow() {
+			glfwInit();
+		}
 		void initVulkan() {}
 		void mainLoop() {}
 		void cleanup() {}
