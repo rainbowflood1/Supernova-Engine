@@ -19,6 +19,7 @@ namespace Supernova {
 			
 		}
 	private:
+		void initWindow() {}
 		void initVulkan() {}
 		void mainLoop() {}
 		void cleanup() {}
