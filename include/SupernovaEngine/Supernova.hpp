@@ -44,6 +44,10 @@ namespace Supernova {
 							  .pEngineName = "Supernova",
 							  .engineVersion = VK_MAKE_VERSION(1, 0, 0),
 							  .apiVersion = vk::ApiVersion14};
+
+			vk::InstanceCreateInfo createInfo{
+				.pApplicationInfo = &appInfo
+			};
 		}
 
 		void mainLoop() {
