@@ -1,6 +1,7 @@
 #ifndef SUPERNOVA_ENGINE_INCLUDED
 #define SUPERNOVA_ENGINE_INCLUDED
 
+#define VULKAN_HPP_NO_STRUCT_CONSTRUCTORS
 #if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
 #include <vulkan/vulkan_raii.hpp>
 #else
@@ -36,6 +37,15 @@ namespace Supernova {
 			window = glfwCreateWindow(width, height, "Supernova", nullptr, nullptr);
 		}
 		void initVulkan() {}
+		
+		void createInstance() {
+			constexpr vk::ApplicationInfo appInfo{.pApplicationName = "Supernova",
+							  .applicationVersion = VK_MAKE_VERSION(1, 0, 0),
+							  .pEngineName = "Supernova",
+							  .engineVersion = VK_MAKE_VERSION(1, 0, 0),
+							  .apiVersion = vk::ApiVersion14};
+		}
+
 		void mainLoop() {
 			while (!glfwWindowShouldClose(window)) {
 				glfwPollEvents();
