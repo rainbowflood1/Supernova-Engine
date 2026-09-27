@@ -25,6 +25,9 @@ namespace Supernova {
 		}
 	private:
 		GLFWwindow* window = nullptr;
+		vk::raii::Context context;
+		vk::raii::Instance instance = nullptr;
+
 		void initWindow() {
 			glfwInit();
 			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
