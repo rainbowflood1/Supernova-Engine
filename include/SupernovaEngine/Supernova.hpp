@@ -33,7 +33,11 @@ namespace Supernova {
 			window = glfwCreateWindow(width, height, "Supernova", nullptr, nullptr);
 		}
 		void initVulkan() {}
-		void mainLoop() {}
+		void mainLoop() {
+			while (!glfwWindowShouldClose(window)) {
+				glfwPollEvents();
+			}
+		}
 		void cleanup() {}
 	};
 };
