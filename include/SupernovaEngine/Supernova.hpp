@@ -24,6 +24,8 @@ namespace Supernova {
 	private:
 		void initWindow() {
 			glfwInit();
+			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 		}
 		void initVulkan() {}
 		void mainLoop() {}
