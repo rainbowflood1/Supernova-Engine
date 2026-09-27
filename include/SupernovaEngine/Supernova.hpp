@@ -38,7 +38,10 @@ namespace Supernova {
 				glfwPollEvents();
 			}
 		}
-		void cleanup() {}
+		void cleanup() {
+			glfwDestroyWindow(window);
+			glfwTerminate();
+		}
 	};
 };
 
