@@ -15,6 +15,8 @@ import vulkan_hpp;
 namespace Supernova {
 	class Supernova {
 	public:
+		uint32_t width = 800;
+		uint32_t height = 600;
 		void run() {
 			initWindow();
 			initVulkan();
@@ -22,10 +24,13 @@ namespace Supernova {
 			cleanup();
 		}
 	private:
+		GLFWwindow* window = nullptr;
 		void initWindow() {
 			glfwInit();
 			glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+			
+			window = glfwCreateWindow(width, height, "Supernova", nullptr, nullptr);
 		}
 		void initVulkan() {}
 		void mainLoop() {}
