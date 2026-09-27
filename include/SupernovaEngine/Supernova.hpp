@@ -64,6 +64,8 @@ namespace Supernova {
 				.enabledExtensionCount = glfwExtensionCount,
 				.ppEnabledExtensionNames = glfwExtensions
 			};
+
+			instance = vk::raii::Instance(context, createInfo);
 		}
 
 		void mainLoop() {
