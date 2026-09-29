@@ -39,6 +39,7 @@ namespace Supernova {
 		GLFWwindow* window = nullptr;
 		vk::raii::Context context;
 		vk::raii::Instance instance = nullptr;
+		vk::raii::DebugUtilsMessengerEXT debugMessenger = nullptr;
 
 		void initWindow() {
 			glfwInit();
@@ -49,6 +50,7 @@ namespace Supernova {
 		}
 		void initVulkan() {
 			createInstance();
+			setupDebugMessenger();
 		}
 		
 		void createInstance() {
@@ -121,6 +123,20 @@ namespace Supernova {
 			std::cerr << "Validation layer: type" << to_string(type) << " msg: " << pCallbackData->pMessage << std::endl;
 
 			return vk::False;
+		}
+
+		void setupDebugMessenger() {
+			if (!enableValidationLayers) return;
+
+			vk::DebugUtilsMessageSeverityFlagsEXT severityFlags(vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+									    vk::DebugUtilsMessageSeverityFlagBitsEXT::eError);
+			vk::DebugUtilsMessageTypeFlagsEXT messageTypeFlags(vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral | vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance | vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation);
+
+			vk::DebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoEXT{.messageSeverity = severityFlags,
+											      .messageType = messageTypeFlags,
+											      .pfnUserCallback = &debugCallback};
+
+			debugMessenger = instance.createDebugUtilsMessengerEXT(debugUtilsMessengerCreateInfoEXT);
 		}
 
 		void mainLoop() {
