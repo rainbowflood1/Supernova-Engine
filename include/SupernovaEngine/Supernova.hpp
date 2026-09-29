@@ -36,7 +36,9 @@ namespace Supernova {
 			
 			window = glfwCreateWindow(width, height, "Supernova", nullptr, nullptr);
 		}
-		void initVulkan() {}
+		void initVulkan() {
+			createInstance();
+		}
 		
 		void createInstance() {
 			constexpr vk::ApplicationInfo appInfo{.pApplicationName = "Supernova",
